@@ -6,9 +6,7 @@ driver:
 provisioner:
   name: ansible_push
   playbook: produccion.yml
-  hosts: webservers
   idempotency_test: True
-  chef_bootstrap_url: nil
 
 platforms:
   #- name: ubuntu-14.04
