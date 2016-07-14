@@ -1,7 +1,8 @@
 ---
 driver:
-  name: vagrant
-
+  name: docker
+  binary: docker
+  use_sudo: false
 
 provisioner:
   name: ansible_push
@@ -14,4 +15,5 @@ platforms:
 
 suites:
   - name: default
-    hosts: webservers
+    provisioner:
+      mygroup: webservers
