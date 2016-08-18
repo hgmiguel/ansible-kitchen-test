@@ -7,14 +7,20 @@ driver:
 provisioner:
   name: ansible_push
   playbook: produccion.yml
+  #extra_vars: "@test_vars.yml"
   idempotency_test: True
+
+verifier:
+  name: serverspec
+  remote_exec: false
 
 platforms:
   #- name: ubuntu-14.04
   - name: centos-7
     driver_config:
       image: centos:7
-  - name: centos-6
+      dockerfile: dokerfile
+
     driver_config:
       image: centos:6
 
@@ -22,3 +28,7 @@ suites:
   - name: default
     provisioner:
       mygroup: webservers
+    verifier:
+      patterns:
+        - test/integration/default/serverspec/*_spec.rb
+
