@@ -20,7 +20,9 @@ platforms:
     driver_config:
       image: centos:7
       dockerfile: dokerfile
-      forward: 8080
+      forward: 
+        - 8080
+        - 22
 
 suites:
   - name: default
