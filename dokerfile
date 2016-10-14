@@ -14,7 +14,7 @@ rm -f /lib/systemd/system/basic.target.wants/*; \
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 VOLUME [ “/sys/fs/cgroup” ]
-RUN /usr/sbin/init
+RUN nohup /usr/sbin/init &
 RUN yum clean all
 RUN yum install -y sudo openssh-server openssh-clients which curl htop
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
