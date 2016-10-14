@@ -24,7 +24,7 @@ ansible 2.2.0
 ## Install
 
 ```console
-$ ansible-galaxy install -p roles/ -r requirements.yml
+$ ansible-galaxy install -p roles/library -r requirements.yml
 $ bundle install
 ```
 

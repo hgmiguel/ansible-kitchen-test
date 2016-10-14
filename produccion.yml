@@ -6,4 +6,4 @@
 - hosts: webservers
   become: true
   roles:
-    - geerlingguy.jenkins
+    - library/geerlingguy.jenkins
