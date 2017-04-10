@@ -9,6 +9,7 @@ provisioner:
   playbook: produccion.yml
   #extra_vars: "@test_vars.yml"
   idempotency_test: True
+  verbose: "vv" # verbose level v, vv, vvv, vvvv
 
 verifier:
   name: serverspec

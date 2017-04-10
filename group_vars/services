@@ -1,0 +1,5 @@
+jenkins_admin_username: admin
+jenkins_admin_password: admin
+
+java_packages:
+- openjdk-8-jdk

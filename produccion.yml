@@ -1,9 +1,5 @@
 ---
-- hosts: all
-  tasks:
-    - yum: name=python state=present
-
-- hosts: webservers
+- hosts: services
   become: true
   roles:
     - library/geerlingguy.jenkins
