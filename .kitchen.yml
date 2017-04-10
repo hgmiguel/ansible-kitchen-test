@@ -15,11 +15,18 @@ verifier:
   remote_exec: false
 
 platforms:
-  #- name: ubuntu-14.04
+  - name: ubuntu-16.04
+    driver_config:
+      provision_command:
+      - apt-get -q -y install python
+      image: ubuntu:16.04
+      forward: 
+        - 8080
+        - 22
   - name: centos-7
     driver_config:
       image: centos:7
-      dockerfile: dokerfile
+      dockerfile: dockerfiles/Dockerfile.centos7
       forward: 
         - 8080
         - 22
@@ -27,7 +34,8 @@ platforms:
 suites:
   - name: default
     provisioner:
-      mygroup: webservers
+      mygroup: services
+      idempotency_test: false
     verifier:
       patterns:
         - test/integration/default/serverspec/*_spec.rb
