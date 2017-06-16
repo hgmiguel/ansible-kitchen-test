@@ -13,10 +13,11 @@ Bundler version 1.12.5
 [ansible](https://www.ansible.com/)
 
 ```console
-miguel.huerta@hgmiguel.mx ~
-ansible 2.2.0
-  config file = /etc/ansible/ansible.cfg
+ansible 2.3.0.0
+  config file = /home/hgmiguel/Source/ansible-kitchen-test/ansible.cfg
   configured module search path = Default w/o overrides
+  python version = 2.7.9 (default, Jun 29 2016, 13:08:31) [GCC 4.9.2]
+
 ```
 
 
@@ -29,7 +30,7 @@ $ bundle install
 ```
 
 ## How to use
-Is you need a general test do:
+If you need a general test do:
 
 ```console
 $ bundle exec kitchen

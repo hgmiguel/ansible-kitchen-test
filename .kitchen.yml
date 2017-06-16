@@ -9,13 +9,24 @@ provisioner:
   playbook: produccion.yml
   #extra_vars: "@test_vars.yml"
   idempotency_test: True
-  verbose: "vv" # verbose level v, vv, vvv, vvvv
+  verbose: "vvvv" # verbose level v, vv, vvv, vvvv
 
 verifier:
   name: serverspec
   remote_exec: false
 
 platforms:
+  - name: ubuntu-promoted-builds-jenkins
+    provisioner:
+      mygroup: 
+      - promoted-builds
+    driver_config:
+      provision_command:
+      - apt-get -q -y install python
+      image: ubuntu:16.04
+      forward: 
+        - 8080
+        - 22
   - name: ubuntu-16.04
     driver_config:
       provision_command:
@@ -34,9 +45,6 @@ platforms:
 
 suites:
   - name: default
-    provisioner:
-      mygroup: services
-      idempotency_test: false
     verifier:
       patterns:
         - test/integration/default/serverspec/*_spec.rb

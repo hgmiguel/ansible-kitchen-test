@@ -1,5 +1,5 @@
 ---
-- hosts: services
+- hosts: promoted-builds
   become: true
   roles:
     - library/geerlingguy.jenkins
