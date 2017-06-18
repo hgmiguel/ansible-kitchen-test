@@ -10,6 +10,7 @@ provisioner:
   #extra_vars: "@test_vars.yml"
   idempotency_test: True
   verbose: "v" # verbose level v, vv, vvv, vvvv
+  chef_bootstrap_url: nil
 
 verifier:
   name: serverspec
@@ -24,10 +25,7 @@ platforms:
       provision_command:
       - apt-get update
       - apt-get upgrade
-      - apt-get -q -y install python python-jenkins python-lxml #python-dev python-pip libxml2-dev libxslt-dev zlib1g-dev
-        #- pip install --upgrade pip
-        #- pip install python-jenkins==0.4.12
-        #- pip install lxml==3.3.3
+      - apt-get -q -y install python 
       image: ubuntu:16.04
       forward: 
         - 8080
