@@ -1,3 +1,7 @@
 ---
 jenkins_plugins: 
 - promoted-builds
+- envinject
+common_packages:
+- python-jenkins 
+- python-lxml 
