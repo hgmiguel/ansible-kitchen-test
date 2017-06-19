@@ -1,0 +1,36 @@
+<hudson.plugins.promoted__builds.PromotionProcess plugin="promoted-builds@2.29">
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <conditions>
+    <hudson.plugins.promoted__builds.conditions.GroovyCondition>
+      <script plugin="script-security@1.29">
+        <script>
+          promotionProcess.getPromotionCondition("hudson.plugins.promoted_builds.conditions.ManualCondition").setUsers(build.getEnvVars()["APPROVERS"]) 
+          return true
+        </script>
+        <sandbox>false</sandbox>
+      </script>
+    </hudson.plugins.promoted__builds.conditions.GroovyCondition>
+    <hudson.plugins.promoted__builds.conditions.ManualCondition>
+      <users/>
+      <parameterDefinitions/>
+    </hudson.plugins.promoted__builds.conditions.ManualCondition>
+    <hudson.plugins.promoted__builds.conditions.SelfPromotionCondition>
+      <evenIfUnstable>false</evenIfUnstable>
+    </hudson.plugins.promoted__builds.conditions.SelfPromotionCondition>
+  </conditions>
+  <icon>star-gold</icon>
+  <isVisible/>
+  <buildSteps>
+    <hudson.tasks.Shell>
+      <command>echo "Approved"</command>
+    </hudson.tasks.Shell>
+  </buildSteps>
+</hudson.plugins.promoted__builds.PromotionProcess>
