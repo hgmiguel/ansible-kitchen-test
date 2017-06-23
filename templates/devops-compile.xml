@@ -18,7 +18,7 @@
     </hudson.plugins.promoted__builds.JobPropertyImpl>
     <EnvInjectJobProperty plugin="envinject@2.1">
       <info>
-        <propertiesFilePath>/var/lib/jenkins/secrets/approvers.ini</propertiesFilePath>
+        <propertiesFilePath>/var/lib/jenkins/secrets/approvers.properties</propertiesFilePath>
         <secureGroovyScript plugin="script-security@1.29">
           <script/>
           <sandbox>false</sandbox>

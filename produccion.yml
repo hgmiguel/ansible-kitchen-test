@@ -18,8 +18,8 @@
       user: "{{ jenkins_admin_password }}"
   - name: Configure approvers 
     copy:
-      src: templates/approvers.ini
-      dest: /var/lib/jenkins/secrets/approvers.ini
+      src: templates/approvers.properties
+      dest: /var/lib/jenkins/secrets/approvers.properties
       owner: "{{ jenkins_process_user }}"
       mode: 0644
   - name: Configure promotions dir
