@@ -6,8 +6,6 @@ driver:
 
 provisioner:
   name: ansible_push
-  playbook: produccion.yml
-  #extra_vars: "@test_vars.yml"
   idempotency_test: True
   verbose: "v" # verbose level v, vv, vvv, vvvv
   chef_bootstrap_url: nil
@@ -21,6 +19,7 @@ platforms:
     provisioner:
       mygroup: 
       - promoted-builds
+      playbook: jenkins-promoted-builds.yml
     driver_config:
       provision_command:
       - apt-get update
@@ -29,22 +28,6 @@ platforms:
       image: ubuntu:16.04
       forward: 
         - 8080
-  - name: ubuntu-16.04
-    driver_config:
-      provision_command:
-      - apt-get -q -y install python
-      image: ubuntu:16.04
-      forward: 
-        - 8080
-        - 22
-  - name: centos-7
-    driver_config:
-      image: centos:7
-      dockerfile: dockerfiles/Dockerfile.centos7
-      forward: 
-        - 8080
-        - 22
-
 suites:
   - name: default
     verifier:
