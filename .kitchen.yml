@@ -6,7 +6,7 @@ driver:
 
 provisioner:
   name: ansible_push
-  idempotency_test: True
+  idempotency_test: false
   verbose: "v" # verbose level v, vv, vvv, vvvv
   chef_bootstrap_url: nil
 
