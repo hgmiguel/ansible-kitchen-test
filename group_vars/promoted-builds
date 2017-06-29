@@ -11,7 +11,7 @@ common_packages:
 - git
 pipeline:
 - name: test-pipeline
-  git: https://github.com/hgmiguel/ansible-kitchen-test
+  git: git@github.com:hgmiguel/ansible-kitchen-test.git
   path: jenkins/pipelines
   branch: feature/pipelines
   
