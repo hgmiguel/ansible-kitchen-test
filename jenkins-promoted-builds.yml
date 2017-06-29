@@ -33,3 +33,11 @@
       dest: /var/lib/jenkins/jobs/devops-compile/promotions/Deploy/config.xml
       owner: "{{ jenkins_process_user }}"
       mode: 0644
+  - name: "config jenkins {{ item.name }} job"
+    jenkins_job:
+      config: "{{ lookup('template', 'templates/pipeline-template.xml.j2') }}"
+      name: "{{ item.name }}"
+      url: "http://{{ jenkins_hostname }}:{{ jenkins_http_port }}{{ jenkins_url_prefix }}"
+      password: "{{ jenkins_admin_username }}"
+      user: "{{ jenkins_admin_password }}"
+    with_items: "{{ pipeline }}"

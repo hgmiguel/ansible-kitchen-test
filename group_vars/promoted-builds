@@ -2,6 +2,15 @@
 jenkins_plugins: 
 - promoted-builds
 - envinject
+- config-file-provider
+- workflow-aggregator
+- git
 common_packages:
 - python-jenkins 
 - python-lxml 
+- git
+pipeline:
+- name: test-pipeline
+  git: https://github.com/hgmiguel/ansible-kitchen-test
+  path: jenkins/pipelines
+  
