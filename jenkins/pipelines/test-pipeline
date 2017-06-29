@@ -1,0 +1,5 @@
+node {
+  configFileProvider([configFile(fileId: 'json-config', variable: 'prueba')]) {
+    sh 'cat $prueba'
+  }
+}
