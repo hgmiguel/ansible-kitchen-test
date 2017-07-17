@@ -5,6 +5,7 @@ jenkins_plugins:
 - config-file-provider
 - workflow-aggregator
 - git
+jenkins_plugin_timeout: 300
 common_packages:
 - python-jenkins 
 - python-lxml 
@@ -14,4 +15,4 @@ pipeline:
   git: git@github.com:hgmiguel/ansible-kitchen-test.git
   path: jenkins/pipelines
   branch: feature/pipelines
-  
+
