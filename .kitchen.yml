@@ -22,6 +22,7 @@ platforms:
       - apt-get upgrade -y
       - apt-get -q -y install python 
       image: ubuntu:16.04
+
 suites:
   - name: jenkins
     verifier:
@@ -34,4 +35,14 @@ suites:
     driver_config:
       forward: 
         - 8080
+  - name: localhost
+    verifier:
+      patterns:
+        - test/integration/default/serverspec/*_spec.rb
+    provisioner:
+      mygroup: 
+      - localhost
+      playbook: localhost.yml
+    driver_config:
+      hostname: localhost
 

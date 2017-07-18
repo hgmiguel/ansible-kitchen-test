@@ -1,0 +1,8 @@
+---
+common_packages:
+- vim
+- docker.io
+- fish
+- tmux
+- cron
+

@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  become: true
+  tasks:
+  - name: Install common dependencies
+    package:
+      name: "{{ item }}"
+      state: present
+    with_items: "{{ common_packages }}"
+  - name: Create user hgmiguel
+    user:
+      name: hgmiguel
+      shell: /bin/fish
+      groups: docker
+      append: yes
+      state: present
+      uid: 2024
+  - name: Install daily cron
+    cron:
+      name: "Clean docker file space"
+      special_time: hourly
+      job: "docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc:ro spotify/docker-gc"
+      user: root
+      state: present
+      cron_file: docker-gc
+      backup: yes
+  - name: Install dot-vim from hgmiguel in github
+    git:
+      repo: 'https://github.com/hgmiguel/dotvim.git'
+      dest: /home/hgmiguel/.vim
+      version: master
+      accept_hostkey: yes
