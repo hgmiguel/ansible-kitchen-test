@@ -15,22 +15,23 @@ verifier:
   remote_exec: false
 
 platforms:
-  - name: ubuntu-promoted-builds-jenkins
-    provisioner:
-      mygroup: 
-      - promoted-builds
-      playbook: jenkins-promoted-builds.yml
+  - name: ubuntu-16.04
     driver_config:
       provision_command:
       - apt-get update
       - apt-get upgrade -y
       - apt-get -q -y install python 
       image: ubuntu:16.04
-      forward: 
-        - 8080
 suites:
-  - name: default
+  - name: jenkins
     verifier:
       patterns:
         - test/integration/default/serverspec/*_spec.rb
+    provisioner:
+      mygroup: 
+      - promoted-builds
+      playbook: jenkins-promoted-builds.yml
+    driver_config:
+      forward: 
+        - 8080
 
